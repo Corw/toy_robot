@@ -34,6 +34,9 @@ class ToyRobot:
 		return True
 
 	def _is_position_valid(self, x, y):
+		if x is None or y is None:
+			return False
+
 		if x < 0 or x >= self._dimension_x:
 			return False
 
@@ -56,7 +59,7 @@ class ToyRobot:
 
 		for (direction, left, right) in orientation:
 			if direction is f:
-				return (direction, left, right)
+				return (left, right)
 
 
 	def place(self, x, y, f):
@@ -80,7 +83,7 @@ class ToyRobot:
 		if self._is_placed is False:
 			return
 
-		(direction, left, right) = self._get_orientation(self._direction)
+		(left, right) = self._get_orientation(self._direction)
 		self._direction = left
 
 		pass
@@ -89,7 +92,7 @@ class ToyRobot:
 		if self._is_placed is False:
 			return
 
-		(direction, left, right) = self._get_orientation(self._direction)
+		(left, right) = self._get_orientation(self._direction)
 		self._direction = right
 
 	def report(self):
@@ -98,31 +101,3 @@ class ToyRobot:
 
 		return "{x}, {y}, {direction}".format(x=self._position_x, y=self._position_y, direction=self._direction.value)
 
-
-toy = ToyRobot()
-toy.place(1, 1, Direction.NORTH)
-print(toy.report())
-
-toy.left()
-print(toy.report())
-
-toy.left()
-print(toy.report())
-
-toy.left()
-print(toy.report())
-
-toy.left()
-print(toy.report())
-
-toy.right()
-print(toy.report())
-
-toy.right()
-print(toy.report())
-
-toy.right()
-print(toy.report())
-
-toy.right()
-print(toy.report())

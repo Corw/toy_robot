@@ -48,6 +48,7 @@ class ToyRobot:
 
 	@staticmethod
 	def _get_orientation(f):
+		# For each direction define its left and right
 		if f not in Direction:
 			return None
 		# (direction, left, right)
@@ -65,6 +66,7 @@ class ToyRobot:
 
 	@staticmethod
 	def _get_translation(f):
+		# For each direction define the increment/decrement on x and y axis
 		if f not in Direction:
 			return None
 		# (direction, move_x, move_y)
@@ -130,7 +132,7 @@ class ToyRobot:
 toyRobot = ToyRobot()
 
 while True:
-	user_input =input("")
+	user_input =input(">")
 
 	chunks = re.findall(r"[\w']+",  user_input.upper())
 	command = chunks[0]

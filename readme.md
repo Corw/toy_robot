@@ -43,3 +43,40 @@ c) PLACE 1,2,EAST MOVE MOVE LEFT MOVE REPORT Output: 3,3,NORTH
 
 ##Deliverables:
 The source files, the test data and any test code.
+
+##Implementation
+As the language for the implementation was not specified, I have implemented in Python.
+Developed on Python version 3.60 but should work with anything above 3.4 (using enumerations that were added in version 3.4)
+
+The only relevant files are:
+* toy_robot.py
+* test_toyRobot.py
+
+
+toy_robot.py is main application file, it contains:
+* ToyRobot class that is implementation of the solution for the task given.
+* Direction class that is a helper, enumeration for directions used in application
+* infinite loop reading and interpreting user console input
+
+test_toyRobot.py is unit test file with all defined unit tests, both for private and public elements of the ToyRobot class
+
+All other files are part of the PyCharm IDE solution, my favourite Python development IDE, made by JetBrains (https://www.jetbrains.com/pycharm/)
+
+#Usage
+I'm assuming you have Python installed on your computer.
+Start python script from command line with:
+python toy_robot.py
+
+
+Application will read any text you have entered after you've presed enter.
+Application will parse the text entered and try to extract command from it. The parsing of the command is fairly forgiving, upper and lower caps are interpreted the same, spaces before, after on between command and parameter are ignored. This is important only for the place command, all other commands are siggle word only and no parameters.
+
+So all of the following and similar combinations will be interpreted as valid:
+* place 0, 0, north
+* PLACE 0, 0, NORTH
+*         place             0,      0,     north
+* plACE  0, 0, NOrtH
+
+You can exit the application with Ctrl+C
+
+If I haven't forgot anything, that should be all for this task.

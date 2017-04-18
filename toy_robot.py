@@ -42,8 +42,16 @@ class ToyRobot:
 
 		return True
 
-	def place(x, y, f):
-		pass
+	def place(self, x, y, f):
+		if f is not type(Direction):
+			return
+
+		if self._is_position_valid(x, y) is False:
+			return
+
+		self._position_x = x
+		self._position_y = y
+		self._direction = f
 
 	def move(self):
 		if self._is_placed is False:

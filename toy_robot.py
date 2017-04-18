@@ -62,6 +62,23 @@ class ToyRobot:
 			if direction is f:
 				return (left, right)
 
+	@staticmethod
+	def _get_translation(f):
+		if f not in Direction:
+			return None
+		# (direction, move_x, move_y)
+		translation = \
+			[
+				(Direction.NORTH, 1, 0),
+				(Direction.SOUTH, -1, 0),
+				(Direction.EAST, 0, 1),
+				(Direction.WEST, 0, -1),
+			]
+
+		for (direction, move_x, move_y) in translation:
+			if direction is f:
+				return (move_x, move_y)
+
 	def place(self, x, y, f):
 		if f not in Direction:
 			return
@@ -77,7 +94,15 @@ class ToyRobot:
 		if self._is_placed is False:
 			return
 
-		pass
+		(move_x, move_y) = self._get_translation(self._direction)
+
+		new_x = self._position_x + move_x
+		new_y = self._position_y + move_y
+
+		if self._is_position_valid(new_x, new_y):
+			self._position_x += move_x
+			self._position_y += move_y
+
 
 	def left(self):
 		if self._is_placed is False:

@@ -33,6 +33,15 @@ class ToyRobot:
 
 		return True
 
+	def _is_position_valid(self, x, y):
+		if x < 0 or x >= self._dimension_x:
+			return False
+
+		if y < 0 or y >= self._dimension_y:
+			return False
+
+		return True
+
 	def place(x, y, f):
 		pass
 

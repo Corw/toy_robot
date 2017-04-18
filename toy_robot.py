@@ -1,4 +1,5 @@
 import enum
+import re
 
 
 class Direction(enum.Enum):
@@ -125,3 +126,35 @@ class ToyRobot:
 			return
 
 		return "{x}, {y}, {direction}".format(x=self._position_x, y=self._position_y, direction=self._direction.value)
+
+toyRobot = ToyRobot()
+
+while True:
+	user_input =input("")
+
+	chunks = re.findall(r"[\w']+",  user_input.upper())
+	command = chunks[0]
+	if command == "PLACE":
+		if len(chunks) > 3:
+			x = int(chunks[1])
+			y = int(chunks[2])
+			direction = None
+
+			for d in Direction:
+				if d.value == chunks[3]:
+					direction = d
+					break
+
+			toyRobot.place(x, y, direction)
+
+	elif command == "REPORT":
+		print(toyRobot.report())
+
+	elif command == "LEFT":
+		toyRobot.left()
+
+	elif command == "RIGHT":
+		toyRobot.right()
+
+	elif command == "MOVE":
+		toyRobot.move()

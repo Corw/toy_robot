@@ -45,7 +45,8 @@ class ToyRobot:
 
 		return True
 
-	def _get_orientation(self, f):
+	@staticmethod
+	def _get_orientation(f):
 		if f not in Direction:
 			return None
 		# (direction, left, right)
@@ -60,7 +61,6 @@ class ToyRobot:
 		for (direction, left, right) in orientation:
 			if direction is f:
 				return (left, right)
-
 
 	def place(self, x, y, f):
 		if f not in Direction:
@@ -100,4 +100,3 @@ class ToyRobot:
 			return
 
 		return "{x}, {y}, {direction}".format(x=self._position_x, y=self._position_y, direction=self._direction.value)
-

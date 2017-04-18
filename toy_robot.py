@@ -13,8 +13,12 @@ class ToyRobot:
 	_position_y = None
 	_direction = None
 
-	def __init__(self):
-		pass
+	_dimension_x = None
+	_dimension_y = None
+
+	def __init__(self, dimension_x=5, dimension_y=5):
+		self._dimension_x = dimension_x
+		self._dimension_y = dimension_y
 
 	@property
 	def _is_placed(self):

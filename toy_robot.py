@@ -2,10 +2,10 @@ import enum
 
 
 class Direction(enum.Enum):
-	NORTH = 1
-	SOUTH = 2
-	EAST = 3
-	WEST = 4
+	NORTH = "NORTH"
+	SOUTH = "SOUTH"
+	EAST = "EAST"
+	WEST = "WEST"
 
 
 class ToyRobot:
@@ -43,7 +43,7 @@ class ToyRobot:
 		return True
 
 	def place(self, x, y, f):
-		if f is not type(Direction):
+		if f not in Direction:
 			return
 
 		if self._is_position_valid(x, y) is False:
@@ -75,4 +75,8 @@ class ToyRobot:
 		if self._is_placed is False:
 			return
 
-		pass
+		return "{x}, {y}, {direction}".format(x=self._position_x, y=self._position_y, direction=self._direction.value)
+
+toy = ToyRobot()
+toy.place(1, 1, Direction.NORTH)
+print(toy.report())

@@ -52,7 +52,53 @@ class TestToyRobot(TestCase):
 		self.assertNotEqual(toyRobot.report(), "-1, 2, SOUTH")
 
 	def test_move(self):
-		self.fail()
+		toyRobot = ToyRobot()
+
+		toyRobot.place(0, 0, Direction.NORTH)
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "1, 0, NORTH")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "2, 0, NORTH")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "3, 0, NORTH")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "4, 0, NORTH")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "4, 0, NORTH")  # validate not going over the edge
+
+		toyRobot.place(0, 0, Direction.EAST)
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 1, EAST")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 2, EAST")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 3, EAST")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 4, EAST")
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 4, EAST")  # validate not going over the edge
+
+		toyRobot.place(0, 0, Direction.WEST)
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 0, WEST")  # validate not going over the edge
+
+		toyRobot.place(0, 0, Direction.SOUTH)
+
+		toyRobot.move()
+		self.assertEqual(toyRobot.report(), "0, 0, SOUTH")  # validate not going over the edge
+
+
 
 	def test_left(self):
 		toyRobot = ToyRobot()

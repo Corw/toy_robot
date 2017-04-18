@@ -42,6 +42,23 @@ class ToyRobot:
 
 		return True
 
+	def _get_orientation(self, f):
+		if f not in Direction:
+			return None
+		# (direction, left, right)
+		orientation = \
+			[
+				(Direction.NORTH, Direction.WEST, Direction.EAST),
+				(Direction.SOUTH, Direction.EAST, Direction.WEST),
+				(Direction.EAST, Direction.NORTH, Direction.SOUTH),
+				(Direction.WEST, Direction.SOUTH, Direction.NORTH),
+			]
+
+		for (direction, left, right) in orientation:
+			if direction is f:
+				return (direction, left, right)
+
+
 	def place(self, x, y, f):
 		if f not in Direction:
 			return
@@ -63,13 +80,17 @@ class ToyRobot:
 		if self._is_placed is False:
 			return
 
+		(direction, left, right) = self._get_orientation(self._direction)
+		self._direction = left
+
 		pass
 
 	def right(self):
 		if self._is_placed is False:
 			return
 
-		pass
+		(direction, left, right) = self._get_orientation(self._direction)
+		self._direction = right
 
 	def report(self):
 		if self._is_placed is False:
@@ -77,6 +98,31 @@ class ToyRobot:
 
 		return "{x}, {y}, {direction}".format(x=self._position_x, y=self._position_y, direction=self._direction.value)
 
+
 toy = ToyRobot()
 toy.place(1, 1, Direction.NORTH)
+print(toy.report())
+
+toy.left()
+print(toy.report())
+
+toy.left()
+print(toy.report())
+
+toy.left()
+print(toy.report())
+
+toy.left()
+print(toy.report())
+
+toy.right()
+print(toy.report())
+
+toy.right()
+print(toy.report())
+
+toy.right()
+print(toy.report())
+
+toy.right()
 print(toy.report())

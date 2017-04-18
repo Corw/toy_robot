@@ -1,6 +1,6 @@
 # Toy robot
 
-##Description
+## Description
 The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units. There are no other obstructions on the table surface.
 
 The robot is free to roam around the surface of the table, but must be prevented from falling to destruction. Any movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
@@ -29,7 +29,7 @@ A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and 
 Provide test data to exercise the application.
 
 
-##Constraints:
+## Constraints:
 The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. Any move that would cause the robot to fall must be ignored.
 
 
@@ -41,10 +41,10 @@ b) PLACE 0,0,NORTH LEFT REPORT Output: 0,0,WEST
 c) PLACE 1,2,EAST MOVE MOVE LEFT MOVE REPORT Output: 3,3,NORTH
 
 
-##Deliverables:
+## Deliverables:
 The source files, the test data and any test code.
 
-##Implementation
+## Implementation
 As the language for the implementation was not specified, I have implemented in Python.
 Developed on Python version 3.60 but should work with anything above 3.4 (using enumerations that were added in version 3.4)
 
@@ -62,7 +62,7 @@ test_toyRobot.py is unit test file with all defined unit tests, both for private
 
 All other files are part of the PyCharm IDE solution, my favourite Python development IDE, made by JetBrains (https://www.jetbrains.com/pycharm/)
 
-#Usage
+## Usage
 I'm assuming you have Python installed on your computer.
 Start python script from command line with:
 python toy_robot.py
